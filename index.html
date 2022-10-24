@@ -7,6 +7,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+    <link href="./node_modules/@fortawesome/fontawesome-free/css/fontawesome.css" rel="stylesheet">
+    <link href="./node_modules/@fortawesome/fontawesome-free/css/brands.css" rel="stylesheet">
+    <link href="./node_modules/@fortawesome/fontawesome-free/css/solid.css" rel="stylesheet">
 
     <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
@@ -48,16 +51,20 @@
     </section>
 
     <section class="flex">
-        <div class="mx-auto">
+        <div class=" flex flex-col mx-auto">
             <a class="twitter-timeline" data-width="500" data-height="500" data-theme="dark" href="https://twitter.com/amberialdreams?ref_src=twsrc%5Etfw">Tweets by amberialdreams</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
             
-            <div class="flex">
-                <div class="mx-auto my-5">
-                    <a href="https://twitter.com/amberialdreams?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-size="large" data-show-screen-name="true" data-show-count="false">Follow @amberialdreams</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-                    <span class="bg-[#1DA1F2] text-red">hello</span>
+            <a href="https://twitter.com/amberialdreams?ref_src=twsrc%5Etfw">
+                <div class="group relative flex items-stretch mx-auto my-3 h-auto w-3/5 rounded-full bg-[#1DA1F2] transition duration-250 ease-in-out delay-700 hover:scale-110 hover:bg-[#0C7ABF]">
+                
+                    <div class="flex items-center my-2 ml-[8%] mr-2 text-2xl"><i class="fa-brands fa-twitter"></i></div>
+                    <div class="font-bold my-2 ml-2"><span>Follow Amberial Dreams</span></div>
+                    <div class="flex items-center absolute w-full h-full overflow-visible translate-x-[85%] group-hover:animate-ball">
+                        <i class="overflow-visible p-3 fa-solid fa-circle-arrow-right group-hover:animate-rotate"></i>
+                    </div>
+                
                 </div>
-            </div>
+            </a>
         </div>
     </section>
 
