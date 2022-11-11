@@ -17,7 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    const container = document.querySelector('#fetch');
+    const containerTop = document.querySelector('#fetch-top');
+    const containerBottom = document.querySelector('#fetch-bottom');
 
     const getData = (offset, limit) => {
         getHttpRequest('GET', `https://api.mod.io/v1/games/2816/mods?_offset=${offset}&_limit=${limit}&tags-in=Featured&api_key=a98e747e59768daf002bcb5aebcfb1fe` 
@@ -27,21 +28,40 @@ document.addEventListener('DOMContentLoaded', () => {
                 total = response.result_total;
             }
         ).catch ( error => {
-                container.textContent = 'ERROR: ' + error.data;
+                containerTop.textContent = 'ERROR: ' + error.data;
+                console.log(error);
             }
         );
     }
 
     function displayData(response) {
-        for (let i = 0; i < response.data.length; i++) {
-            // Create parent element to hold data
-            const parent = document.createElement('div');
+        results = response.data.length;
 
-            getValue('name', response.data[i].name, parent);
-            getValue('submitted by', response.data[i].submitted_by.username, parent);
-            getThumbnail(response.data[i].logo.thumb_320x180, parent);
-            
-            container.appendChild(parent);
+        for (let i = 0; i < 3; i++) {
+            if (i < results) {
+                // Create parent element to hold data
+                const parent = document.createElement('div');
+
+                getValue('name', response.data[i].name, parent);
+                getValue('submitted by', response.data[i].submitted_by.username, parent);
+                getThumbnail(response.data[i].logo.thumb_320x180, parent);
+                
+                containerTop.appendChild(parent);
+            }
+        }
+
+        // Only execute if there are enough results
+        if (results > 3) {
+            for (let i = 3; i < results; i++) {
+                // Create parent element to hold data
+                const parent = document.createElement('div');
+
+                getValue('name', response.data[i].name, parent);
+                getValue('submitted by', response.data[i].submitted_by.username, parent);
+                getThumbnail(response.data[i].logo.thumb_320x180, parent);
+                
+                containerBottom.appendChild(parent);
+            }
         }
 
         function getValue(name, value, parent) {
@@ -57,7 +77,6 @@ document.addEventListener('DOMContentLoaded', () => {
             thumbnail.src = value;
             parent.appendChild(thumbnail);
         }
-
     }
     
     // Paginate results: 7 per page
@@ -75,14 +94,18 @@ document.addEventListener('DOMContentLoaded', () => {
     let total = 0;
 
     document.querySelector('#previous-page').addEventListener('click', () => {
-        clearChildren(container);
-        paginate(-1);
+        clearChildren(containerTop);
+        clearChildren(containerBottom);
+        //paginate(-1);
+        console.log(paginate(-1));
         getData(currentOffset, limit);
     });
 
     document.querySelector('#next-page').addEventListener('click', () => {
-        clearChildren(container);
-        paginate(1);
+        clearChildren(containerTop);
+        clearChildren(containerBottom);
+        //paginate(1);
+        console.log(paginate(1));
         getData(currentOffset, limit);
     });
 
