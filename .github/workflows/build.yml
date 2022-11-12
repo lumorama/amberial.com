@@ -9,10 +9,12 @@ on:
       - 'master'
   workflow_dispatch: {}
 
+permissions:
+  contents: write
+
 jobs: 
   build:
     runs-on: ubuntu-latest
-    
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -20,3 +22,11 @@ jobs:
           node-version: '14'
       - run: npm install
       - run: npm run build
+      - name: Push built output
+      - run: |
+          date > generated.txt
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add .
+          git commit -m "generated"
+          git push
