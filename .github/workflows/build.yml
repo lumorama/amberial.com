@@ -1,4 +1,4 @@
-name: build
+name: Build and Deploy amberial.com to Pages
 
 on:
   push:
@@ -7,21 +7,36 @@ on:
   pull_request:
     branches:
       - 'master'
+  # Allows manual running of workflow from Actions tab
   workflow_dispatch: {}
-
+  
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
-  contents: write
+  contents: read
+  pages: write      # to deploy to Pages
+  id-token: write   # to verify the deployment originates from an appropriate source
+
+# Allow one concurrent deployment
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+  
+env:
+  BUILD_PATH: "." # default value when not using subfolders
+  # BUILD_PATH: subfolder
 
 jobs: 
   build:
+    name: Build
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
       - uses: actions/checkout@v3
+      - name: Setup Node
       - uses: actions/setup-node@v3
         with:
-          node-version: '14'
-      - run: npm install
-      - run: npm run build
+          node-version: '16'
+      - run: npm install && npm run build
       - run: |
           date > generated.txt
           git config user.name github-actions
@@ -29,3 +44,20 @@ jobs:
           git add .
           git commit -m "generated"
           git push
+      - name: Upload GitHub Pages artifact
+      - uses: actions/upload-pages-artifact@v1.0.4
+  deploy:
+    name: Deploy
+  # Deploy job
+    # Add a dependency to the build job
+    needs: build
+    # Deploy to the github-pages environment
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    # Specify runner + deployment step
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1.2.2
