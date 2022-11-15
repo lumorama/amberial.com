@@ -5,9 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="./dist/output.css" rel="stylesheet">
     <link href="./style.css" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+    
     <link href="./node_modules/@fortawesome/fontawesome-free/css/fontawesome.css" rel="stylesheet">
     <link href="./node_modules/@fortawesome/fontawesome-free/css/brands.css" rel="stylesheet">
     <link href="./node_modules/@fortawesome/fontawesome-free/css/solid.css" rel="stylesheet">
@@ -22,14 +20,30 @@
     <title>Amberial</title>
     <!-- ... -->
 </head>
-<body class="bg-black text-white" style="font-family: 'Raleway', sans-serif;">
+<body class="bg-black text-white kano">
 
-    <section class="bg-fixed bg-cover center" style="background-image: url('img/screens/amberial.jpg');">
-        <div class="w-full" style="background-image: url('img/separator_bottom.png'); height: 242px"></div>
+    <header class="w-full">
+        <div class="fixed w-full" style="background-image: url('img/separator_bottom.png'); height: 242px"></div>
+        <div class="fixed flex items-center px-8 py-4 bg-black">
+            <a href=""><img class="h-9" src="./img/Avatar.png"></a>
+            <nav class="mx-4">
+                <ul class="flex text-xl cinzel-bold">
+                    <li class="px-3"><a href="#">HOME</a></li>
+                    <li class="px-3"><a href="#">TRAILER</a></li>
+                    <li class="px-3"><a href="#">COMMUNITY</a></li>
+                    <li class="px-3"><a href="#">BUY</a></li>
+                    <li class="px-3"><a href="#">CONTACT</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="pt-48 bg-fixed bg-cover center" style="background-image: url('img/screens/amberial.jpg');">
+
         <div class="w-full flex items-center justify-center mb-24">
             <a class="w-96 sm:w-2/5" href="https://store.steampowered.com/app/917140/Amberial_Dreams/"><img src="img/logos/amberial.png" /></a>
         </div>
-        <div class="w-full flex justify-center items-center ">
+        <div class="w-full flex justify-center items-center">
             <div class="bg-black bg-opacity-60 py-14 px-14 w-4/5 rounded-xl space-y-8 flex flex-col lg:flex-row lg:space-x-16">
                 <div class="flex-1">
                         <iframe class="w-full rounded-xl h-96 lg:h-full"  src="https://www.youtube.com/embed/UG1VCM3GUYc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

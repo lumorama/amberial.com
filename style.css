@@ -1,3 +1,48 @@
+/* Importing custom fonts */
+
+@font-face {
+    font-family: 'kanoregular';
+    src: url('./fonts/kano-webfont.woff2') format('woff2'),
+         url('./fonts/kano-webfont.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'cinzel_decorativeregular';
+    src: url('./fonts/cinzeldecorative-regular-webfont.woff2') format('woff2'),
+         url('./fonts/cinzeldecorative-regular-webfont.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'cinzelbold';
+    src: url('./fonts/cinzel-bold-webfont.woff2') format('woff2'),
+         url('./fonts/cinzel-bold-webfont.woff') format('woff');
+    font-weight: 700;
+    font-style: bold;
+}
+
+.kano {
+    font-family: 'kanoregular', sans-serif;
+}
+
+.cinzel-bold {
+    font-family: 'cinzelbold', serif;
+}
+
+.cinzel-deco {
+    font-family: 'cinzel_decorativeregular', serif;
+}
+
+/* Reset styles */
+
+header ul {
+    list-style: none;
+} 
+
+/* Custom classes for the animated Twitter button */
 .fill {
     position: absolute;
     width: 100%;
