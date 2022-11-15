@@ -6,6 +6,10 @@ module.exports = {
       animation: {
       },
       keyframes: {
+      },
+      backgroundImage: {
+        'heroimage': "url('./img/AMB_KeyArt.jpg')",
+        'background-one': "url('./img/background.jpg')",
       }
     },
   },
