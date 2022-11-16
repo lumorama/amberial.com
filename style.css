@@ -36,11 +36,15 @@
     font-family: 'cinzel_decorativeregular', serif;
 }
 
-/* Reset styles */
+/* Extra text styles */
 
-header ul {
-    list-style: none;
-} 
+.text-shadow {
+    text-shadow: 0px 3px 4px rgba(0,0,0,1);
+}
+
+.amberial-yellow {
+    color: rgb(255, 199, 0);
+}
 
 /* Custom classes for the animated Twitter button */
 .fill {
@@ -127,7 +131,7 @@ header ul {
 
 #twitter-follow:hover .arrow {
     animation: 0.7s linear infinite spin;
-    color: rgb(249,221,2);
+    color: rgb(255, 199, 0);
 }
 
 @keyframes hover-scene {
