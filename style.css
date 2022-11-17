@@ -9,11 +9,11 @@
 }
 
 @font-face {
-    font-family: 'cinzel_decorativeregular';
-    src: url('./fonts/cinzeldecorative-regular-webfont.woff2') format('woff2'),
-         url('./fonts/cinzeldecorative-regular-webfont.woff') format('woff');
-    font-weight: 400;
-    font-style: normal;
+    font-family: 'cinzel_decorativebold';
+    src: url('./fonts/cinzeldecorative-bold-webfont.woff2') format('woff2'),
+         url('./fonts/cinzeldecorative-bold-webfont.woff') format('woff');
+    font-weight: 700;
+    font-style: bold;
 }
 
 @font-face {
@@ -33,7 +33,7 @@
 }
 
 .cinzel-deco {
-    font-family: 'cinzel_decorativeregular', serif;
+    font-family: 'cinzel_decorativebold', serif;
 }
 
 /* Extra text styles */
