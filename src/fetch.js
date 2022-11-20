@@ -18,6 +18,11 @@ document.addEventListener('DOMContentLoaded', () => {
     
     const containerTop = document.querySelector('#fetch-top');
     const containerBottom = document.querySelector('#fetch-bottom');
+    const previousButton = document.querySelector('#previous-page');
+    const nextButton = document.querySelector('#next-page');
+
+    setUpButton(previousButton, -1);
+    setUpButton(nextButton, 1);
 
     const getData = (offset, limit) => {
         getHttpRequest('GET', `https://api.mod.io/v1/games/2816/mods?_offset=${offset}&_limit=${limit}&tags-in=Featured&api_key=a98e747e59768daf002bcb5aebcfb1fe` 
@@ -27,6 +32,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 total = response.result_total;
                 // After total is set, THEN set page values
                 setText(currentOffset, total);
+                // Hide loading spiral
+                // Activate page buttons
+                previousButton.enabled = true;
+                nextButton.enabled = true;
             }
         ).catch ( error => {
                 // Use the top row to display the error info.
@@ -124,19 +133,16 @@ document.addEventListener('DOMContentLoaded', () => {
     let limit = 7;
     let total = 0;
 
-    document.querySelector('#previous-page').addEventListener('click', () => {
-        clearChildren(containerTop);
-        clearChildren(containerBottom);
-        paginate(-1);
-        getData(currentOffset, limit);
-    });
-
-    document.querySelector('#next-page').addEventListener('click', () => {
-        clearChildren(containerTop);
-        clearChildren(containerBottom);
-        paginate(1);
-        getData(currentOffset, limit);
-    });
+    function setUpButton (button, multiplier) {
+        button.addEventListener('click', () => {
+            clearChildren(containerTop);
+            clearChildren(containerBottom);
+            paginate(multiplier);
+            getData(currentOffset, limit);
+            // Disable button to prevent duplicate GET
+            button.enabled = false;
+        });
+    }
 
     function paginate(multiplier) {
         // Determines which position we should start from when getting results
