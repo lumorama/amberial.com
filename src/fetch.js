@@ -16,8 +16,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     
-    const containerTop = document.querySelector('#featured-grid-top');
-    const containerBottom = document.querySelector('#featured-grid-bottom');
+    const containerTop = document.querySelector('#fetch-top');
+    const containerBottom = document.querySelector('#fetch-bottom');
 
     const getData = (offset, limit) => {
         getHttpRequest('GET', `https://api.mod.io/v1/games/2816/mods?_offset=${offset}&_limit=${limit}&tags-in=Featured&api_key=a98e747e59768daf002bcb5aebcfb1fe` 
@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         ).catch ( error => {
                 // Use the top row to display the error info.
-                containerTop.textContent = 'ERROR: ' + error.data;
+                containerTop.textContent = 'ERROR: ' + error.data + ' | ' + error;
                 console.log('ERROR: ' + error);
             }
         );
@@ -43,43 +43,54 @@ document.addEventListener('DOMContentLoaded', () => {
         for (let i = 0; i < 3; i++) {
             // To avoid errors while filling first row
             if (i < results) {
+                // Create parent container
+                const parent = document.createElement('article');
+                parent.classList.add('featured-level-wrapper');
                 // Create level name, author name, and thumbnail from response
                 createTextElement(
                     'h3',
                     response.data[i].name,
-                    containerTop,
-                    'cinzel-deco','text-center'
+                    parent,
+                    'featured-header'
                 );
                 createTextElement(
                     'p',
                     response.data[i].submitted_by.username,
-                    containerTop,
+                    parent,
                     'text-center'
                 );
                 createImageElement(
                     response.data[i].logo.thumb_320x180,
-                    containerTop
+                    parent,
+                    'mx-auto', 'my-4', 'amberial-border-small'
                 );
+                containerTop.appendChild(parent);
             }
         }
 
         // Only fill the second row if there are enough results
         if (results > 3) {
             for (let i = 3; i < results; i++) {
+                // Create parent container
+                const parent = document.createElement('article');
+                parent.classList.add('featured-level-wrapper');
                 createTextElement(
                     'h3',
                     response.data[i].name,
-                    containerBottom,
-                    'cinzel-deco','text-center', 
+                    parent,
+                    'featured-header'
                 );
                 createTextElement(
+                    'p',
                     response.data[i].submitted_by.username,
-                    containerBottom,
+                    parent,
                     'text-center'
                 );
                 createImageElement(response.data[i].logo.thumb_320x180,
-                    containerBottom
+                    parent,
+                    'mx-auto', 'my-4', 'amberial-border-small'
                 );
+                containerBottom.appendChild(parent);
             }
         }
 

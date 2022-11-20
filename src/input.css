@@ -1,3 +1,69 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    
+    @font-face {
+        font-family: 'kanoregular';
+        src: url('../font/kano-webfont.woff2') format('woff2'),
+            url('../font/kano-webfont.woff') format('woff');
+        font-weight: 400;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: 'cinzel_decorativebold';
+        src: url('../font/cinzeldecorative-bold-webfont.woff2') format('woff2'),
+            url('../font/cinzeldecorative-bold-webfont.woff') format('woff');
+        font-weight: 700;
+        font-style: bold;
+    }
+
+    @font-face {
+        font-family: 'cinzelbold';
+        src: url('../font/cinzel-bold-webfont.woff2') format('woff2'),
+            url('../font/cinzel-bold-webfont.woff') format('woff');
+        font-weight: 700;
+        font-style: bold;
+    }
+
+    h1 {
+        @apply font-cinzel-bold m-0 text-6xl text-center text-shadow;
+    }
+
+    h2 {
+        @apply text-amberial-yellow font-cinzel-bold text-3xl text-center;
+    }
+    h3 {
+        @apply text-amberial-yellow font-cinzel-deco text-xl;
+    }
+}
+
+@layer components {
+    .vertical-wrapper {
+        @apply flex flex-col items-center justify-center;
+    }
+    
+    .featured-level-wrapper {
+        @apply flex flex-col items-center justify-between m-4;
+    }
+    
+    .amberial-border {
+        @apply border-solid border-4 border-x-amber-700 border-y-amberial-yellow;
+    }
+
+    .amberial-border-small {
+        @apply border-solid border-2 border-x-amber-700 border-y-amberial-yellow;
+    }
+
+    .featured-header {
+        @apply text-xl min-h-[56px] align-middle text-center flex items-center;
+    }
+}
+
+@layer utilities {
+    .text-shadow {
+        text-shadow: 0px 3px 4px rgba(0,0,0,1);
+    }
+}

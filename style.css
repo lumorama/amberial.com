@@ -1,6 +1,6 @@
 /* Importing custom fonts */
 
-@font-face {
+/* @font-face {
     font-family: 'kanoregular';
     src: url('./fonts/kano-webfont.woff2') format('woff2'),
          url('./fonts/kano-webfont.woff') format('woff');
@@ -34,7 +34,7 @@
 
 .cinzel-deco {
     font-family: 'cinzel_decorativebold', serif;
-}
+} */
 
 /* Extra text styles */
 
