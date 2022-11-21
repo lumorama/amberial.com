@@ -60,6 +60,10 @@
     .featured-header {
         @apply text-xl min-h-[56px] align-middle text-center flex items-center;
     }
+
+    .loader {
+        @apply border-8 rounded-full border-amber-700 border-t-amberial-yellow w-10 h-10 animate-spin;
+    }
 }
 
 @layer utilities {

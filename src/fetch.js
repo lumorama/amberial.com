@@ -16,17 +16,35 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     
+    const loader = document.querySelector('.loader');
     const containerTop = document.querySelector('#fetch-top');
     const containerBottom = document.querySelector('#fetch-bottom');
     const previousButton = document.querySelector('#previous-page');
     const nextButton = document.querySelector('#next-page');
 
+    function toggleLoader(isToggled) {
+        // if (isToggled) {
+        //     loader.classList.remove('hidden');
+        // } else if (!isToggled) {
+        //     loader.classList.add('hidden');
+        // }
+        console.log('HELLO: ' + loader + isToggled);
+
+        isToggled
+            ? loader.classList.remove('hidden')
+            : loader.classList.add('hidden')
+    }
+
     setUpButton(previousButton, -1);
     setUpButton(nextButton, 1);
 
     const getData = (offset, limit) => {
+        // First, enable the loader
+        toggleLoader(true);
         getHttpRequest('GET', `https://api.mod.io/v1/games/2816/mods?_offset=${offset}&_limit=${limit}&tags-in=Featured&api_key=a98e747e59768daf002bcb5aebcfb1fe` 
         ).then( response => {
+                // Disable loader
+                toggleLoader(false);
                 displayData(response);
                 // Set results total for pagination
                 total = response.result_total;
