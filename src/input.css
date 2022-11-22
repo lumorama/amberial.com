@@ -28,15 +28,28 @@
         font-style: bold;
     }
 
-    h1 {
-        @apply font-cinzel-bold m-0 text-6xl text-center text-shadow;
+    * {
+        @apply box-border;
+    }
+
+    section {
+        @apply relative px-4 sm:px-12 lg:px-32 py-16 bg-cover bg-center flex flex-col justify-center items-center;
+    }
+
+    section > * {
+        @apply my-4;
     }
 
     h2 {
-        @apply text-amberial-yellow font-cinzel-bold text-3xl text-center;
+        @apply font-cinzel-bold text-4xl md:text-5xl text-center text-shadow;
     }
+
     h3 {
-        @apply text-amberial-yellow font-cinzel-deco text-xl;
+        @apply text-amberial-yellow font-cinzel-bold text-2xl md:text-3xl text-center;
+    }
+
+    p {
+        @apply w-full self-start;
     }
 }
 
@@ -53,8 +66,12 @@
         @apply border-solid border-2 border-x-amber-700 border-y-amberial-yellow;
     }
 
+    .featured-row {
+        @apply mx-auto min-h-[240px] flex justify-center items-center flex-wrap md:flex-nowrap;
+    }
+
     .featured-level-wrapper {
-        @apply min-w-0 flex flex-initial flex-col items-center justify-between m-4 p-0 bg-transparent-black amberial-border-small rounded-t-xl relative;
+        @apply min-w-0 flex flex-[0_0_37vw] md:flex-[0_1_auto] flex-col items-center justify-between m-0.5 sm:m-2 lg:m-4 p-0 bg-transparent-black amberial-border-small rounded-t-xl relative;
     }
 
     .featured-header {
@@ -62,7 +79,7 @@
     }
 
     .featured-user {
-        @apply w-4/5 align-middle text-center block text-ellipsis overflow-hidden;
+        @apply w-4/5 align-middle text-center block truncate;
     }
 
     .loader {
@@ -70,7 +87,11 @@
     }
 
     .page-button {
-        @apply text-xl font-cinzel-bold bg-amberial-yellow w-36 mx-4 my-3 p-4 rounded-lg text-black border-2 border-amber-700 hover:scale-105 active:scale-95;
+        @apply text-sm sm:text-base md:text-lg bg-amberial-yellow h-12 w-24 md:h-16 md:w-36 mx-1 m-2 md:m-4 rounded-lg text-center text-black border-2 border-amber-700 hover:scale-105 active:scale-95;
+    }
+
+    .twitter-follow-mobile {
+        @apply flex items-center bg-[#1DA1F2] rounded-md p-2 active:bg-[#0C7ABF] active:scale-95 focus:bg-[#0C7ABF] focus:scale-95;
     }
 }
 

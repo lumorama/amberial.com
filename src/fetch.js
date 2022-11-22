@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 'featured-header'
             );
             createTextElement(
-                'p',
+                'div',
                 element.submitted_by.username,
                 parent,
                 'featured-user'
@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
             createImageElement(
                 element.logo.thumb_320x180,
                 parent,
-                'mx-auto', 'mt-4'
+                'mt-4'
             );
             parentContainer.appendChild(parent);
         }
