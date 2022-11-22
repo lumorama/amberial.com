@@ -41,15 +41,11 @@
     }
 
     h2 {
-        @apply font-cinzel-bold text-4xl md:text-5xl text-center text-shadow;
+        @apply font-cinzel-bold text-4xl sm:text-5xl md:text-6xl text-center text-shadow;
     }
 
     h3 {
         @apply text-amberial-yellow font-cinzel-bold text-2xl md:text-3xl text-center;
-    }
-
-    p {
-        @apply w-full self-start;
     }
 }
 
@@ -118,5 +114,22 @@
         color: black;
         box-shadow: 0 4px 4px 0 rgba(0,0,0,.5);
         margin-top:-1.25rem;
+    }
+
+    .videowrapper {
+        position: relative;
+        overflow: hidden;
+        padding-bottom: 56.25%;
+        height: 0;
+    }
+
+    .videowrapper iframe,
+    .videowrapper embed {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        max-width: 100%;
     }
 }

@@ -23,30 +23,32 @@
 <body class="bg-black text-lg text-white font-kano">
 
     <header class="w-full">
-        <div class="z-10 absolute w-full translate-y-[-40px] scale-x-[-1.0]" style="background-image: url('img/separator_bottom.png'); height: 242px"></div>
-        <div class="z-10 absolute flex items-center py-4 px-4 sm:px-12 lg:px-32">
-            <a class="w-9" href=""><img class="h-9" src="./img/Avatar.png"></a>
+        <div class="z-10 absolute w-full translate-y-[-40px]" style="background-image: url('img/separator_bottom.png'); height: 242px"></div>
+        <div class="z-10 absolute flex items-center py-4 px-4 lg:px-12">
+            <a class="w-9" href="#"><img class="h-9" src="./img/Avatar.png"></a>
             <nav class="mx-4">
-                <ul class="flex text-xl cinzel-bold">
-                    <li class="px-3 hover:text-amberial-yellow hover:scale-110"><a href="#">HOME</a></li>
-                    <li class="px-3 hover:text-amberial-yellow hover:scale-110"><a href="#">TRAILER</a></li>
-                    <li class="px-3 hover:text-amberial-yellow hover:scale-110"><a href="#">COMMUNITY</a></li>
-                    <li class="px-3 hover:text-amberial-yellow hover:scale-110"><a href="#">BUY</a></li>
-                    <li class="px-3 hover:text-amberial-yellow hover:scale-110"><a href="#">CONTACT</a></li>
+                <ul class="flex text-xs md:text-xl cinzel-bold">
+                    <li class="px-1 md:px-3 hover:text-amberial-yellow hover:scale-110"><a href="#trailer">TRAILER</a></li>
+                    <li class="px-1 md:px-3 hover:text-amberial-yellow hover:scale-110"><a href="#gameplay">GAMEPLAY</a></li>
+                    <li class="px-1 md:px-3 hover:text-amberial-yellow hover:scale-110"><a href="#community">COMMUNITY</a></li>
+                    <li class="px-1 md:px-3 hover:text-amberial-yellow hover:scale-110"><a href="#buy">BUY</a></li>
+                    <li class="px-1 md:px-3 hover:text-amberial-yellow hover:scale-110"><a href="#contact">CONTACT</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
     <section class="pt-48 pb-28" style="background-image: url('./img/AMB_KeyArt.jpg');">
-        <h1><a class="lg:w-[450px] w-4/5" href="https://store.steampowered.com/app/917140/Amberial_Dreams/"><img src="img/logos/amberial.png" alt="Amberial Dreams" /></a></h1>
+        <h1><a href="https://store.steampowered.com/app/917140/Amberial_Dreams/"><img class="mx-auto w-4/5 md:w-[450px]" src="img/logos/amberial.png" alt="Amberial Dreams" /></a></h1>
         <div class="my-8 md:text-5xl text-3xl text-center font-cinzel-bold text-shadow text-amberial-yellow">Now in Early Access</div>
         <iframe class="w-full lg:w-1/2" src="https://store.steampowered.com/widget/917140/" frameborder="0" width="646" height="190"></iframe>
     </section>
     
-    <section style="background-image: url('./img/background-alternate.jpg');">
-        <h2>The Hit Series Returns</h2>
-        <iframe class="amberial-border w-full" width="560" height="315" src="https://www.youtube-nocookie.com/embed/kXWQh93GCNU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <section class="w-full" style="background-image: url('./img/background-alternate.jpg');">
+        <h2 id="trailer">The Hit Series Returns</h2>
+        <div class="w-full max-w-[640px] amberial-border">
+            <div class="videowrapper"><iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/kXWQh93GCNU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+        </div>
         <div class="my-8 flex-1">
             <p>Roll, bounce, and discover a new galaxy in an open-ended platformer for all skill levels, from relaxed to pure madness. Make your own levels in a rich editor, share them, and play with friends!</p>
 
@@ -58,7 +60,7 @@
     </section>
 
     <section style="background-image: url('./img/mid-background.jpg');">
-        <h2>They See You Rolling...</h2>
+        <h2 id="gameplay">They See You Rolling...</h2>
         <div class="mx-auto w-full grid gap-8 grid-cols-1 md:grid-cols-2">
             <div class="vertical-wrapper justify-start">
                 <img class="m-2 border-solid border-4 border-x-amber-700 border-y-amberial-yellow" src="./img/screens/screenshot_1.jpg" />
@@ -96,7 +98,7 @@
     </section>
 
     <section style="background-image: url('./img/background-alternate.jpg');">
-        <h2>Our Community</h2>
+        <h2 id="community">Our Community</h2>
         <p>Amberial Dreams is a game with a strong focus on community. We care about what our players think, and we want to build it alongside you! Now is the time for you to have your say, so <a target="_blank" href="https://discord.gg/amberial" class="text-amberial-yellow">join our official Discord server</a> to get involved!</p>
         <p>One of the best things about the game is how easy it is for the players to share their custom-made content. We worked really hard on our feature-rich in game level editor, and we love seeing what our players can do with it! Check out this cycle's featured player-made levels.
 
@@ -114,38 +116,38 @@
                 <button class="page-button" type="button" id="next-page">NEXT</button>
             </div>
         </div>
-
-        <a class="twitter-timeline" data-width="500" data-height="700" data-theme="dark" href="https://twitter.com/amberialdreams?ref_src=twsrc%5Etfw">Tweets by amberialdreams</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-        <button id ="twitter-follow" type="button" class="mx-auto my-8 hidden md:flex">
-            <a href="https://twitter.com/amberialdreams?ref_src=twsrc%5Etfw" class="background">
-                <div class="animatedbg"></div>
-                <span>
+        <div class="vertical-wrapper mt-8 md:mt-0">
+            <a class="twitter-timeline" data-width="350" data-height="500" data-theme="dark" href="https://twitter.com/amberialdreams?ref_src=twsrc%5Etfw">Tweets by amberialdreams</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            <button id ="twitter-follow" type="button" class="mx-auto my-8 hidden md:flex">
+                <a href="https://twitter.com/amberialdreams?ref_src=twsrc%5Etfw" class="background">
+                    <div class="animatedbg"></div>
+                    <span>
+                        <i class="text-2xl fa-brands fa-twitter"></i>
+                    </span>
+                    <span>Follow @amberialdreams</span>
+                    <div class="wrapper">
+                        <i class="text-lg arrow fa-solid fa-circle-arrow-right"></i>
+                    </div>
+                </a>
+            </button>
+            <a href="https://twitter.com/amberialdreams?ref_src=twsrc%5Etfw" class="md:hidden mx-auto my-8 twitter-follow-mobile">
+                <span class="m-1">
                     <i class="text-2xl fa-brands fa-twitter"></i>
                 </span>
-                <span>Follow @amberialdreams</span>
-                <div class="wrapper">
-                    <i class="text-lg arrow fa-solid fa-circle-arrow-right"></i>
-                </div>
+                <span class="m-1 align-middle">FOLLOW</span>
             </a>
-        </button>
-        <a href="#" class="md:hidden mx-auto my-8 twitter-follow-mobile">
-            <span class="m-1">
-                <i class="text-2xl fa-brands fa-twitter"></i>
-            </span>
-            <span class="m-1 align-middle">FOLLOW</span>
-        </a>
+        </div>
     </section>
 
     <section class="pb-48" style="background-image: url('./img/mid-background.jpg');">
-        <h2>Join Us</h2>
+        <h2 id="buy">Join Us</h2>
         <p>Amberial Dreams is available NOW on Steam! In the Early Access stage, we're constantly working on new features and asking our players what they'd like to see in the game.</p>
         <p class="font-cinzel-deco text-xl">Are you interested in helping us shape the future of Amberial Dreams?</p>
         <iframe class="w-full lg:w-1/2" src="https://store.steampowered.com/widget/917140/" frameborder="0" width="646" height="190"></iframe>
         <div class="absolute w-full opacity-[.80] m-0 bottom-0" style="background-image: url('img/separator_top.png'); height: 242px"></div>
     </section>
 
-    <footer class="px-4 sm:px-12 lg:px-32 text-2xl text-center pt-8 pb-16 vertical-wrapper bg-black">
+    <footer id="contact" class="px-4 sm:px-12 lg:px-32 text-2xl text-center pt-8 pb-16 vertical-wrapper bg-black">
         <p>Amberial Dreams is a project of</p>
         <a target="_blank" href="https://www.lumorama.com"><img class="h-24" src="img/lumorama_logo_transparent.png"></a>
         <p>published by</p>
