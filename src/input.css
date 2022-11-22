@@ -44,11 +44,7 @@
     .vertical-wrapper {
         @apply flex flex-col items-center justify-center;
     }
-    
-    .featured-level-wrapper {
-        @apply flex flex-col items-center justify-between m-4;
-    }
-    
+        
     .amberial-border {
         @apply border-solid border-4 border-x-amber-700 border-y-amberial-yellow;
     }
@@ -57,17 +53,49 @@
         @apply border-solid border-2 border-x-amber-700 border-y-amberial-yellow;
     }
 
+    .featured-level-wrapper {
+        @apply min-w-0 flex flex-initial flex-col items-center justify-between m-4 p-0 bg-transparent-black amberial-border-small rounded-t-xl relative;
+    }
+
     .featured-header {
-        @apply text-xl min-h-[56px] align-middle text-center flex items-center;
+        @apply text-lg block my-2 w-[95%] align-middle text-center truncate;
+    }
+
+    .featured-user {
+        @apply w-4/5 align-middle text-center block text-ellipsis overflow-hidden;
     }
 
     .loader {
         @apply border-8 rounded-full border-amber-700 border-t-amberial-yellow w-10 h-10 animate-spin;
+    }
+
+    .page-button {
+        @apply text-xl font-cinzel-bold bg-amberial-yellow w-36 mx-4 my-3 p-4 rounded-lg text-black border-2 border-amber-700 hover:scale-105 active:scale-95;
     }
 }
 
 @layer utilities {
     .text-shadow {
         text-shadow: 0px 3px 4px rgba(0,0,0,1);
+    }
+
+    .truncated:hover:after,
+    .truncated:focus:after,
+    .truncated:active:after {
+        content: attr(data-text);
+        display: block;
+        overflow: visible;
+        text-overflow: inherit;
+        white-space: normal;
+        position: absolute;
+        left: auto;
+        top: auto;
+        width: auto;
+        max-width: 20rem;
+        padding: 0.5rem;
+        background: white;
+        color: black;
+        box-shadow: 0 4px 4px 0 rgba(0,0,0,.5);
+        margin-top:-1.25rem;
     }
 }

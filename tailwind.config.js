@@ -5,6 +5,7 @@ module.exports = {
     extend: {
       colors: {
         'amberial-yellow': '#FFC700',
+        'transparent-black': 'rgba(0,0,0,0.5)',
       },
       fontFamily: {
         'kano': ['kanoregular', 'sans-serif'],

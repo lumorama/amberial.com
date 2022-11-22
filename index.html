@@ -107,14 +107,15 @@
             <div class="w-full vertical-wrapper my-8 bg-[rgba(0,0,0,0.5)] amberial-border">
                 <h2 class="my-4">Featured Levels</h2>
                 <div class="vertical-wrapper relative">
-                    <div class="mx-auto w-full lg:w-4/5 flex justify-center items-center flex-col lg:flex-row min-h-[260px]" id="fetch-top"></div>
+                    <div class="mx-auto w-full lg:w-4/5 flex justify-center items-center flex-col lg:flex-row min-h-[240px]" id="fetch-top"></div>
                     <div class="absolute hidden loader"></div>
-                    <div class="mx-auto w-full flex justify-center items-center flex-col lg:flex-row min-h-[260px]" id="fetch-bottom"></div>
+                    <div class="mx-auto w-full flex justify-center items-center flex-col lg:flex-row min-h-[240px]" id="fetch-bottom"></div>
                 </div>
-                <p>Page <span id="current-page"></span> of <span id="total-page"></span></p>
-                <div class="flex justify-center my-8">
-                    <button class="w-32 my-3 mx-3 p-3 rounded-sm bg-white text-black" type="button" id="previous-page">PREVIOUS</button>
-                    <button class="w-32 my-3 p-4 rounded-sm bg-white text-black" type="button" id="next-page">NEXT</button>
+                
+                <div class="flex justify-center items-center my-8">
+                    <button class="page-button" type="button" id="previous-page">PREVIOUS</button>
+                    <p>PAGE <span class="text-amberial-yellow" id="current-page"></span> OF <span class="text-amberial-yellow" id="total-page"></span></p>
+                    <button class="page-button" type="button" id="next-page">NEXT</button>
                 </div>
             </div>
 

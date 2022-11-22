@@ -1,4 +1,17 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const loader = document.querySelector('.loader');
+    const containerTop = document.querySelector('#fetch-top');
+    const containerBottom = document.querySelector('#fetch-bottom');
+    const previousButton = document.querySelector('#previous-page');
+    const nextButton = document.querySelector('#next-page');
+    let truncatedArray = [];
+    let timeOut;
+
+    setUpButton(previousButton, -1);
+    setUpButton(nextButton, 1);
+
+    window.addEventListener('resize', setTooltip);
+
     const getHttpRequest = (method, url) => {
         return fetch(url, {
             method: method,
@@ -15,28 +28,13 @@ document.addEventListener('DOMContentLoaded', () => {
             return response.json();
         });
     }
-    
-    const loader = document.querySelector('.loader');
-    const containerTop = document.querySelector('#fetch-top');
-    const containerBottom = document.querySelector('#fetch-bottom');
-    const previousButton = document.querySelector('#previous-page');
-    const nextButton = document.querySelector('#next-page');
 
     function toggleLoader(isToggled) {
-        // if (isToggled) {
-        //     loader.classList.remove('hidden');
-        // } else if (!isToggled) {
-        //     loader.classList.add('hidden');
-        // }
-        console.log('HELLO: ' + loader + isToggled);
-
         isToggled
             ? loader.classList.remove('hidden')
             : loader.classList.add('hidden')
     }
 
-    setUpButton(previousButton, -1);
-    setUpButton(nextButton, 1);
 
     const getData = (offset, limit) => {
         // First, enable the loader
@@ -64,73 +62,65 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function displayData(response) {
+        // Clear truncatedArray to make room for new set of data
+        truncatedArray = [];
+
         // Current set of results
         results = response.data.length;
 
         for (let i = 0; i < 3; i++) {
             // To avoid errors while filling first row
             if (i < results) {
-                // Create parent container
-                const parent = document.createElement('article');
-                parent.classList.add('featured-level-wrapper');
-                // Create level name, author name, and thumbnail from response
-                createTextElement(
-                    'h3',
-                    response.data[i].name,
-                    parent,
-                    'featured-header'
-                );
-                createTextElement(
-                    'p',
-                    response.data[i].submitted_by.username,
-                    parent,
-                    'text-center'
-                );
-                createImageElement(
-                    response.data[i].logo.thumb_320x180,
-                    parent,
-                    'mx-auto', 'my-4', 'amberial-border-small'
-                );
-                containerTop.appendChild(parent);
+                createFeaturedLevelDisplay(response.data[i], containerTop);
             }
         }
 
         // Only fill the second row if there are enough results
         if (results > 3) {
             for (let i = 3; i < results; i++) {
-                // Create parent container
-                const parent = document.createElement('article');
-                parent.classList.add('featured-level-wrapper');
-                createTextElement(
-                    'h3',
-                    response.data[i].name,
-                    parent,
-                    'featured-header'
-                );
-                createTextElement(
-                    'p',
-                    response.data[i].submitted_by.username,
-                    parent,
-                    'text-center'
-                );
-                createImageElement(response.data[i].logo.thumb_320x180,
-                    parent,
-                    'mx-auto', 'my-4', 'amberial-border-small'
-                );
-                containerBottom.appendChild(parent);
+                createFeaturedLevelDisplay(response.data[i], containerBottom);
             }
+        }
+
+        function createFeaturedLevelDisplay(element, parentContainer) {
+            // Create parent container for data
+            const parent = document.createElement('article');
+            parent.classList.add('featured-level-wrapper');
+            // Create level name, author name, and thumbnail from response
+            createTextElement(
+                'h3',
+                element.name,
+                parent,
+                'featured-header'
+            );
+            createTextElement(
+                'p',
+                element.submitted_by.username,
+                parent,
+                'featured-user'
+            );
+            createImageElement(
+                element.logo.thumb_320x180,
+                parent,
+                'mx-auto', 'mt-4'
+            );
+            parentContainer.appendChild(parent);
         }
 
         function createTextElement(element, value, parent, ...classes) {
             // Display text data
             const textElement = document.createElement(element);
             textElement.textContent = value;
+            // Set attribute in case of overflow
+            textElement.setAttribute('data-text', value);
             // Assign classes for styling (using Tailwind)
             classes.forEach(element => {
                 textElement.classList.add(element);
             });
             // Append this element to parent container
             parent.appendChild(textElement);
+            // Add to array to check if a tooltip needs to be added
+            truncatedArray.push(textElement);
         }
 
         function createImageElement(value, parent, ...classes) {
@@ -144,6 +134,30 @@ document.addEventListener('DOMContentLoaded', () => {
             // Append this element to parent container
             parent.appendChild(thumbnail);
         }
+        setTooltip();
+    }
+
+    function setTooltip () {
+        // If text is truncated, add a tooltip that displays the full text.
+        clearTimeout(timeOut);  
+        const isTruncated = element => {
+            // Check if the element is long enough to be truncated by the browser.
+            return element.scrollWidth - element.offsetWidth > 7;
+        }
+        // A delay of 1 second is set, so that the DOM has time to update
+        // the values of the element before assigning tooltips.
+        timeOut = setTimeout(() => {
+            truncatedArray.forEach(
+                element => {
+                    if ( isTruncated(element) && !element.classList.contains('truncated') ) {
+                        element.classList.add('truncated');
+                    } else if ( !isTruncated(element) && element.classList.contains('truncated') ) {
+                        element.classList.remove('truncated');
+                    }
+                }
+            )},
+            1000
+        )
     }
 
     // ?_offset=30&_limit=5 - this will retrieve 5 results after ignoring the first 30 (31 - 35)
