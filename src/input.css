@@ -33,7 +33,7 @@
     }
 
     section {
-        @apply relative px-4 sm:px-12 lg:px-32 py-16 bg-cover bg-center flex flex-col justify-center items-center;
+        @apply relative px-4 sm:px-12 lg:px-48 py-16 bg-cover bg-center flex flex-col justify-center items-center;
     }
 
     section > * {
@@ -89,7 +89,19 @@
     .twitter-follow-mobile {
         @apply flex items-center bg-[#1DA1F2] rounded-md p-2 active:bg-[#0C7ABF] active:scale-95 focus:bg-[#0C7ABF] focus:scale-95;
     }
-}
+
+    #mobile-menu {
+        @apply w-full absolute top-0 right-0 bg-black -translate-y-full amberial-border transition-transform ease-in;
+    }
+
+    #mobile-menu.active {
+        @apply translate-y-0 shadow-md transition-transform ease-out;
+    }
+
+    nav li {
+        @apply w-full text-center px-4 py-3 hover:text-amberial-yellow hover:scale-105 active:text-amberial-yellow active:scale-95;
+    }
+} 
 
 @layer utilities {
     .text-shadow {
@@ -116,6 +128,7 @@
         margin-top:-1.25rem;
     }
 
+    /* Responsive Youtube embed */
     .videowrapper {
         position: relative;
         overflow: hidden;
