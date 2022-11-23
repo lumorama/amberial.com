@@ -9,8 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
     let truncatedArray = [];
     let timeOut;
 
-    setUpButton(previousButton, -1);
-    setUpButton(nextButton, 1);
 
     window.addEventListener('resize', setTooltip);
 
@@ -57,8 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         ).catch ( error => {
                 // Use the top row to display the error info.
-                containerTop.textContent = 'ERROR: ' + error.data + ' | ' + error;
-                console.log('ERROR: ' + error);
+                containerTop.textContent = 'ERROR: ' + error + ' | ' + error.data;
             }
         );
     }
@@ -200,7 +197,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function setText(currentOffset, totalResults) {
         const currentPage = document.querySelector('#current-page');
         const totalPage = document.querySelector('#total-page');
-        // Current page = How many times limit divides into offset + limit (to get current total results)
+        // Get number of pages that we've gone past
         currentPage.textContent = ( currentOffset + limit ) / limit;
         // Total pages = how many times limit divides into total results. 
         // + 1 extra if the last page won't be full (needs additional partial page).
@@ -211,4 +208,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     getData(currentOffset, limit);
+    setUpButton(previousButton, -1);
+    setUpButton(nextButton, 1);
 })

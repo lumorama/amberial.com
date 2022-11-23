@@ -18,10 +18,3 @@ menuClose.addEventListener('click', closeMenu);
 function closeMenu () {
     mobileMenu.classList.remove('active');
 }
-
-
-
-
-
-
-
