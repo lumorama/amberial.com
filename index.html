@@ -5,9 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="./dist/output.css" rel="stylesheet">
     <link href="./style.css" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+    
     <link href="./node_modules/@fortawesome/fontawesome-free/css/fontawesome.css" rel="stylesheet">
     <link href="./node_modules/@fortawesome/fontawesome-free/css/brands.css" rel="stylesheet">
     <link href="./node_modules/@fortawesome/fontawesome-free/css/solid.css" rel="stylesheet">
@@ -16,49 +14,133 @@
     <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
     <link rel="manifest" href="favicon/site.webmanifest">
+    <script src="./src/script.js" defer></script>
+    <script src="./src/fetch.js"></script>
 
     <title>Amberial</title>
     <!-- ... -->
 </head>
-<body class="bg-black text-white" style="font-family: 'Raleway', sans-serif;">
+<body class="bg-black text-lg text-white font-kano">
 
-    <section class="bg-fixed bg-cover center" style="background-image: url('img/screens/amberial.jpg');">
-        <div class="w-full" style="background-image: url('img/separator_bottom.png'); height: 242px"></div>
-        <div class="w-full flex items-center justify-center mb-24">
-            <a class="w-96 sm:w-2/5" href="https://store.steampowered.com/app/917140/Amberial_Dreams/"><img src="img/logos/amberial.png" /></a>
+    <header class="w-full">
+        <div class="z-10 absolute w-full translate-y-[-40px]" style="background-image: url('img/separator_bottom.png'); height: 242px"></div>
+        <div class="z-10 absolute hidden sm:flex items-center py-4 px-8 md:px-12">
+            <a class="w-9" href="#"><img class="h-9" src="./img/Avatar.png"></a>
+            <nav class="mx-4">
+                <ul class="flex text-base lg:text-lg">
+                    <li><a href="#trailer">TRAILER</a></li>
+                    <li><a href="#gameplay">GAMEPLAY</a></li>
+                    <li><a href="#community">COMMUNITY</a></li>
+                    <li><a href="#buy">BUY</a></li>
+                    <li><a href="#contact">CONTACT</a></li>
+                </ul>
+            </nav>
         </div>
-
-        <div class="w-full flex justify-center items-center ">
-
-            <div class="bg-black bg-opacity-60 py-14 px-14 w-4/5 rounded-xl space-y-8 flex flex-col lg:flex-row lg:space-x-16">
-                <div class="flex-1">
-                        <iframe class="w-full rounded-xl h-96 lg:h-full"  src="https://www.youtube.com/embed/UG1VCM3GUYc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-
-                <div class="space-y-5 text-lg flex-1">
-                    <p>The hit series returns! Roll, bounce, and discover a new galaxy in an open-ended platformer for all skill levels, from relaxed to pure madness. Make your own levels in a rich editor, share them, and play with friends!</p>
-
-                    <p>In the long gone days of 2007, Amberial landed on the indie Flash gaming scene, and over the course of 4 games accumulated over 2 million players.
-                        15 years later, Amberial Dreams brings the series back with a bang, boasting a brand-new engine, more contraptions than ever before,
-                        but the same basic premise: only two buttons to move, no jumping allowed.</p>
-                    
-                    <iframe class="w-full" src="https://store.steampowered.com/widget/917140/" frameborder="0" width="646" height="190"></iframe>
-                </div>
-            </div>
+        <div class="z-10 fixed w-full sm:hidden right:0 py-4 px-4 lg:px-12">
+            <a id="mobile-nav" class="w-9"><img class="h-9" src="./img/Avatar.png"></a>
+            <nav id="mobile-menu">
+                <div id="close-menu" class="absolute py-2 px-4 top-0 left-0 text-5xl"><i class="fa-solid fa-xmark"></i></div>
+                <ul class="vertical-wrapper justify-end text-xl p-4">
+                    <li><a href="#">HOME</a></li>
+                    <li><a href="#trailer">TRAILER</a></li>
+                    <li><a href="#gameplay">GAMEPLAY</a></li>
+                    <li><a href="#community">COMMUNITY</a></li>
+                    <li><a href="#buy">BUY</a></li>
+                    <li><a href="#contact">CONTACT</a></li>
+                </ul>
+            </nav>
         </div>
-        
-        <div class="w-full" style="background-image: url('img/separator_top.png'); height: 242px"></div>
+    </header>
 
+    <section class="pt-48 pb-28" style="background-image: url('./img/AMB_KeyArt.jpg');">
+        <h1><img class="mx-auto w-4/5 md:w-[450px]" src="img/logos/amberial.png" alt="Amberial Dreams" /></h1>
+        <div class="my-8 text-4xl md:text-5xl text-center font-cinzel-bold text-shadow">Now in Early Access</div>
+        <a class="button text-2xl md:4xl p-4 sm:p-8" href="https://store.steampowered.com/app/917140/Amberial_Dreams/">GET THE GAME</a>
+    </section>
+    
+    <section id="trailer" class="w-full" style="background-image: url('./img/background-alternate.jpg');">
+        <h2>The Hit Series Returns</h2>
+        <div class="w-full max-w-[640px] amberial-border">
+            <div class="videowrapper"><iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/kXWQh93GCNU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+        </div>
+        <div class="my-8 flex-1">
+            <p>Roll, bounce, and discover a new galaxy in an open-ended platformer for all skill levels, from relaxed to pure madness. Make your own levels in a rich editor, share them, and play with friends!</p>
+            <p>In the long gone days of 2007, Amberial landed on the indie Flash gaming scene, and over the course of 4 games accumulated over 2 million players.
+                15 years later, Amberial Dreams brings the series back with a bang, boasting a brand-new engine, more contraptions than ever before,
+                but the same basic premise: only two buttons to move, no jumping allowed.</p>
+        </div>
+        <img src="./img/Freeplay_2019.png" alt="Received Honourable Mention at Freeplay 2019" />
     </section>
 
-    <section class="flex">
-        <div class=" flex flex-col mx-auto">
-            <a class="twitter-timeline" data-width="500" data-height="500" data-theme="dark" href="https://twitter.com/amberialdreams?ref_src=twsrc%5Etfw">Tweets by amberialdreams</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <section id="gameplay" style="background-image: url('./img/mid-background.jpg');">
+        <h2>They See You Rolling...</h2>
+        <div class="mx-auto w-full grid gap-8 grid-cols-1 md:grid-cols-2">
+            <div class="vertical-wrapper justify-start">
+                <img class="m-2 border-solid border-4 border-x-amber-700 border-y-amberial-yellow" src="./img/screens/screenshot_1.jpg" />
+                <h3>Keep it simple</h3>
+                <p>Rolling left and right, will you be able to tackle the challenge?
+                    Use the different surfaces to control your momentum, play in null gravity and interact with the many different pieces to finish more than 50 handcrafted levels.</p>
+            </div>
+            <div class="vertical-wrapper justify-start">
+                <img class="m-2 border-solid border-4 border-x-amber-700 border-y-amberial-yellow" src="./img/screens/202206_AD_dreams_and_nightmares_BANNER_STEAM.gif" />
+                <h3>Dreams and nightmares</h3>
+                <p>Follow the story of Amber as she wakes up from her long slumber, alone, to find her former idyllic world transformed to the core. Incarnate her avatar and explore 4 unique biomes, changing the world as you progress. Where are your missing sisters and what happened to your paradise?</p>
+            </div>
+            <div class="vertical-wrapper justify-start">
+                <img class="m-2 border-solid border-4 border-x-amber-700 border-y-amberial-yellow" src="./img/screens/202206_AD_Can_you_surpass_no_text_STEAM.gif" />
+                <h3>Surpass the spire of trials</h3>
+                <p>Test your skills against pixel perfect levels filled with devilish traps. Only players who've mastered the game can hope to finish them at all, much less get all the collectibles!</p>
+            </div>
+            <div class="vertical-wrapper justify-start">
+                <img class="m-2 border-solid border-4 border-x-amber-700 border-y-amberial-yellow" src="./img/screens/screenshot_2.jpg" />
+                <h3>Flex your creativity!</h3>
+                <p>Take control of the world using our rich level building tools! Customise existing levels and build your own from scratch, then share them with the world.</p>
+            </div>
+            <div class="vertical-wrapper justify-start">
+                <img class="m-2 border-solid border-4 border-x-amber-700 border-y-amberial-yellow" src="./img/screens/GAMEPLAY_design_your_own_levels_no_text.gif" />
+                <h3>Are you up for a challenge?</h3>
+                <p>Tackle the mind-boggling creations made by other bright minds in the community. Thanks to a powerful tagging and research tool, you can easily browse levels that you want to play. It's amazing what people will come up with!</p>
+            </div>
+            <div class="vertical-wrapper justify-start">
+                <img class="m-2 border-solid border-4 border-x-amber-700 border-y-amberial-yellow" src="./img/screens/202206_AD_Simple_mechanics_no_text_STEAM.gif" />
+                <h3>Constantly expanding...</h3>
+                <p>New levels and mechanics are being added all the time! You will never run out of possibilities with the constant expansion happening during the Early Access phase.</p>
+            </div>
+        </div>
+        </h1>
+    </section>
 
-            <button type="button" class="mx-auto my-3">
-                <a href="https://twitter.com/amberialdreams?ref_src=twsrc%5Etfw" class="background">
+    <section id="community" style="background-image: url('./img/background-alternate.jpg');">
+        <h2>Our Community</h2>
+        <p>Amberial Dreams is a game with a strong focus on community. We care about what our players think, and we want to build it alongside you! Now is the time for you to have your say, so <a target="_blank" href="https://discord.gg/amberial" class="text-amberial-yellow">join our official Discord server</a> to get involved!</p>
+        <p>One of the best things about the game is how easy it is for the players to share their custom-made content. We worked really hard on our feature-rich in game level editor, and we love seeing what our players can do with it! Check out this cycle's featured player-made levels.
+        <div class="vertical-wrapper bg-[rgba(0,0,0,0.5)] amberial-border relative py-4">
+            <h3 class="my-4">Featured Levels</h2>
+            <div class="absolute text-sm bottom-0 right-0 m-2">From <a target="_blank" href="https://mod.io/g/amberial" class="text-amberial-yellow">mod.io</a></div>
+            <div class="vertical-wrapper relative">
+                <div class="w-full md:w-4/5 featured-row" id="fetch-top"></div>
+                <div class="absolute hidden loader"></div>
+                <div class="w-full featured-row" id="fetch-bottom"></div>
+            </div>
+            <p class="align-middle text-center mt-1">PAGE <span class="text-amberial-yellow" id="current-page"></span> OF <span class="text-amberial-yellow" id="total-page"></span></p>
+            <div class="flex justify-center items-center my-2">
+                <button class="button page-button" type="button" id="previous-page">PREVIOUS</button>
+                <button class="button page-button" type="button" id="next-page">NEXT</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="buy" class="pb-48" style="background-image: url('./img/mid-background.jpg');">
+        <h2>Join Us</h2>
+        <p>Amberial Dreams is available NOW on Steam! In the Early Access stage, we're constantly working on new features and asking our players what they'd like to see in the game. Are you interested in helping us shape the future of Amberial Dreams?</p>
+        <h3>Get the game now</h3>
+        <iframe class="w-full lg:w-2/3" src="https://store.steampowered.com/widget/917140/" frameborder="0" width="646" height="190"></iframe>
+        <h3>Follow us on Twitter</h3>
+        <div class="twitter-section vertical-wrapper">
+            <a class="twitter-timeline" data-width="450" data-height="500" data-theme="dark" href="https://twitter.com/amberialdreams?ref_src=twsrc%5Etfw">Tweets by amberialdreams</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            <button id ="twitter-follow" type="button" class="mx-auto my-8 hidden md:flex">
+                <a href="https://twitter.com/amberialdreams?ref_src=twsrc%5Etfw" class="background hover:amberial-border">
                     <div class="animatedbg"></div>
-
                     <span>
                         <i class="text-2xl fa-brands fa-twitter"></i>
                     </span>
@@ -68,15 +150,35 @@
                     </div>
                 </a>
             </button>
+            <button>
+                <a href="https://twitter.com/amberialdreams?ref_src=twsrc%5Etfw" class="md:hidden mx-auto my-8 twitter-follow-mobile">
+                    <span class="m-1">
+                        <i class="text-2xl fa-brands fa-twitter"></i>
+                    </span>
+                    <span class="m-1 align-middle">FOLLOW</span>
+                </a>
+            </button>
         </div>
+        <div class="absolute w-full opacity-[.80] m-0 bottom-0" style="background-image: url('img/separator_top.png'); height: 242px"></div>
     </section>
 
-    <section class="h-32 w-full text-center mt-4 text-2xl mb-32">
-
-        <p class="mt-6">Amberial Dreams is a project of <a target="_blank" href="https://www.lumorama.com"><img class="h-24 inline" src="img/lumorama_logo_transparent.png"></a></p>
-        <div class="my-2"> contact us at team@lumorama.com</div>
-
-    </section>
+    <footer id="contact" class="px-8 lg:px-12 text-base md:text-lg text-center pt-8 pb-4 vertical-wrapper bg-black">
+        <p>Amberial Dreams is a project by</p>
+        <a target="_blank" href="https://www.lumorama.com"><img class="h-24" src="img/lumorama_logo_transparent.png" alt="Lumorama"></a>
+        <p>published by</p>
+        <a class="my-4" target="_blank" href="https://store.steampowered.com/publisher/twinsailsinteractive/"><img class="h-24" src="img/twinsails-logo.png" alt="Twin Sails Interactive"></a>
+        <div class="vertical-wrapper my-16">
+            <div class="font-cinzel-bold text-2xl mb-2">REACH OUT TO US ON:</div>
+            <div class="flex text-4xl">
+                <a class="p-1" href="https://discord.gg/amberial"><i class="fa-brands fa-discord"></i></a>
+                <a class="p-1" href="https://twitter.com/amberialdreams"><i class="fa-brands fa-twitter"></i></a>
+                <a class="p-1" href="mailto:team@lumorama.com"><i class="fa-solid fa-envelope"></i></a>
+                <a class="p-1" href="https://store.steampowered.com/app/917140/Amberial_Dreams/"><i class="fa-brands fa-steam"></i></a>
+            </div>
+        </div>
+        <a class="text-base m-4" href="#"><i class="fa-solid fa-arrow-up"></i> BACK TO TOP</a>
+        <p class="text-sm">&#169; LUMORAMA 2022</p>
+    </footer>
 </body>
 
 </html>
