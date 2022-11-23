@@ -1,3 +1,5 @@
+// Manages everything related to mod.io API calls
+
 document.addEventListener('DOMContentLoaded', () => {
     const loader = document.querySelector('.loader');
     const containerTop = document.querySelector('#fetch-top');
@@ -39,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const getData = (offset, limit) => {
         // First, enable the loader
         toggleLoader(true);
-        getHttpRequest('GET', `https://api.mod.io/v1/games/2816/mods?_offset=${offset}&_limit=${limit}&tags-in=Featured&api_key=a98e747e59768daf002bcb5aebcfb1fe` 
+        getHttpRequest('GET', `https://api.mod.io/v1/games/2816/mods?_sort=-date_live&_offset=${offset}&_limit=${limit}&tags-in=Featured&api_key=a98e747e59768daf002bcb5aebcfb1fe` 
         ).then( response => {
                 // Disable loader
                 toggleLoader(false);
@@ -160,7 +162,6 @@ document.addEventListener('DOMContentLoaded', () => {
         )
     }
 
-    // ?_offset=30&_limit=5 - this will retrieve 5 results after ignoring the first 30 (31 - 35)
     let currentOffset = 0;
     let limit = 7;
     let total = 0;
