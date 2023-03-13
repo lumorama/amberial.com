@@ -1,3 +1,5 @@
+// Manages everything related to mod.io API calls
+
 document.addEventListener('DOMContentLoaded', () => {
     const loader = document.querySelector('.loader');
     const containerTop = document.querySelector('#fetch-top');
@@ -7,8 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
     let truncatedArray = [];
     let timeOut;
 
-    setUpButton(previousButton, -1);
-    setUpButton(nextButton, 1);
 
     window.addEventListener('resize', setTooltip);
 
@@ -37,26 +37,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     const getData = (offset, limit) => {
-        // First, enable the loader
+        // First, enable the loader icon
         toggleLoader(true);
-        getHttpRequest('GET', `https://api.mod.io/v1/games/2816/mods?_offset=${offset}&_limit=${limit}&tags-in=Featured&api_key=a98e747e59768daf002bcb5aebcfb1fe` 
+        // Make request to mod.io for Featured Levels, sorted by newest to oldest
+        getHttpRequest('GET', `https://api.mod.io/v1/games/2816/mods?_sort=-date_live&_offset=${offset}&_limit=${limit}&tags-in=Featured&api_key=a98e747e59768daf002bcb5aebcfb1fe` 
         ).then( response => {
-                // Disable loader
+                // Disable loader icon
                 toggleLoader(false);
                 displayData(response);
                 // Set results total for pagination
                 total = response.result_total;
                 // After total is set, THEN set page values
                 setText(currentOffset, total);
-                // Hide loading spiral
                 // Activate page buttons
                 previousButton.enabled = true;
                 nextButton.enabled = true;
             }
         ).catch ( error => {
-                // Use the top row to display the error info.
-                containerTop.textContent = 'ERROR: ' + error.data + ' | ' + error;
-                console.log('ERROR: ' + error);
+                // Use the top row to display the error info
+                containerTop.textContent = 'ERROR: ' + error + ' | ' + error.data;
             }
         );
     }
@@ -64,8 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function displayData(response) {
         // Clear truncatedArray to make room for new set of data
         truncatedArray = [];
-
-        // Current set of results
+        // Get new set of data
         results = response.data.length;
 
         for (let i = 0; i < 3; i++) {
@@ -83,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         function createFeaturedLevelDisplay(element, parentContainer) {
-            // Create parent container for data
+            // Create container for each featured level
             const parent = document.createElement('article');
             parent.classList.add('featured-level-wrapper');
             // Create level name, author name, and thumbnail from response
@@ -160,7 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
         )
     }
 
-    // ?_offset=30&_limit=5 - this will retrieve 5 results after ignoring the first 30 (31 - 35)
+    // Set values for URL parameters
     let currentOffset = 0;
     let limit = 7;
     let total = 0;
@@ -199,10 +197,10 @@ document.addEventListener('DOMContentLoaded', () => {
     function setText(currentOffset, totalResults) {
         const currentPage = document.querySelector('#current-page');
         const totalPage = document.querySelector('#total-page');
-        // Current page = How many times limit divides into offset + limit (to get current total results)
+        // Get current page number from number of pages that we've gone past
         currentPage.textContent = ( currentOffset + limit ) / limit;
         // Total pages = how many times limit divides into total results. 
-        // + 1 extra if the last page won't be full (needs additional partial page).
+        // + 1 extra if the last page won't be full (needs additional partial page)
         totalPage.textContent =
             totalResults % limit
             ? Math.floor(totalResults / limit + 1)
@@ -210,4 +208,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     getData(currentOffset, limit);
+    setUpButton(previousButton, -1);
+    setUpButton(nextButton, 1);
 })
